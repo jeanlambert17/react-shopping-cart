@@ -11,9 +11,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }))
-app.use(passport.initialize()); // NPI
+app.use(passport.initialize()); 
 app.use(passport.session()); 
-passport.serializeUser(function (user, done) { // NPI
+passport.serializeUser(function (user, done) {
     done(null, user);
 });
 passport.deserializeUser(function (user, done) {
@@ -22,9 +22,17 @@ passport.deserializeUser(function (user, done) {
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS")
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
+
 app.use('/', require('./controllers'));
 
-app.listen(3000, function () {
+app.listen(3001, function () {
     console.log('Example app listening on port 3000!');
 });
 
