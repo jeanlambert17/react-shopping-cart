@@ -10,8 +10,8 @@ module.exports.user = {
 
 module.exports.product = {
 
-    findProduct: 'SELECT id_product AS productid, id_user AS userid, brand_product AS brand, price_product AS price, name_product AS name, des_product AS description, stock_product AS stock, img_product AS img FROM product WHERE name_product LIKE $1',
-    findProducts: 'SELECT id_product AS productid, id_user AS userid, brand_product AS brand, price_product AS price, name_product AS name, des_product AS description, stock_product AS stock, img_product AS img FROM product',
+    findProduct: 'SELECT prod.id_product AS productid, users.username AS username, prod.id_user AS userid, prod.brand_product AS brand, prod.price_product AS price, prod.name_product AS name, prod.des_product AS description, prod.stock_product AS stock, prod.img_product AS img FROM product AS prod INNER JOIN app_user AS users ON users.id_user = prod.id_user WHERE name_product LIKE $1',
+    findProducts: 'SELECT prod.id_product AS productid, users.username AS username, prod.id_user AS userid, prod.brand_product AS brand, prod.price_product AS price, prod.name_product AS name, prod.des_product AS description, prod.stock_product AS stock, prod.img_product AS img FROM product AS prod INNER JOIN app_user AS users ON users.id_user = prod.id_user',
     addProduct: 'INSERT INTO product(id_user, brand_product, price_product, name_product, des_product, stock_product) VALUES($1,$2,$3,$4,$5,$6)',
     deleteProduct: 'DELETE FROM product WHERE id_user = $1 AND id_product = $2',
 

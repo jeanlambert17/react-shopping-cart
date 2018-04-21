@@ -11,7 +11,8 @@ router.get('/add', (req, res) => {
 
 router.post('/new', isLoggedIn, (req,res) => {
     let userId = req.session.passport.user.userid;
-    db.none(productQueries.addProduct, [userId,req.body.brand,req.body.price,req.body.name,req.body.description,req.body.stock])
+    let {brand,price,name,description,stock} = req.body;
+    db.none(productQueries.addProduct, [userId,brand,price,name,description,stock])
     .then(() => {
         res.status(200).send({
             status:200,
