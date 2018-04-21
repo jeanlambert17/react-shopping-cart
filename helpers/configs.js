@@ -1,5 +1,4 @@
 const config = {
-    url: 'postgres://postgres:masterkey@localhost:5432/ShoppingCart',
-    port: 3001,
+    url: 'postgres://postgres:masterkey@127.0.0.1:5432/ShoppingCart',
 }
 module.exports = config;

@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
 
 app.use('/', require('./controllers'));
 
-app.listen(3001, function () {
-    console.log('Example app listening on port 3000!');
+app.listen(10036, function () {
+    console.log('Example app listening on port 10036!');
 });
 

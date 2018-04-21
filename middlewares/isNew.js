@@ -1,5 +1,5 @@
 const db = require('./../helpers/db');
-const userQueries = require('./../helpers/queries').userQueries;
+const userQueries = require('./../helpers/queries').user;
 
 module.exports.isNew = (req, res, next) => {
     verifyData(req.body).then((data) => {
