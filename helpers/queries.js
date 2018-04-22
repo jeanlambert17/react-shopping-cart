@@ -24,3 +24,9 @@ module.exports.cart = {
     getItems: 'SELECT cart.id_cart_product AS id, cart.id_product AS idproduct, prod.brand_product AS brand, prod.price_product AS price, prod.name_product AS name, cart.quantity_product AS quantity FROM cart_product AS cart INNER JOIN product AS prod ON prod.id_product = cart.id_product WHERE id_cart = $1',
 
 }
+
+module.exports.bill = {
+
+    // Queries para la factura... 
+
+}
