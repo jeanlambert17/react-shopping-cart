@@ -17,9 +17,9 @@ router.post('/bill', isLoggedIn, (req, res) =>{
         .then((items) =>{
             items.forEach(item => {
                 billprice = billprice + item.price;
-                await task.None(billQueries.addItem, [billId, item.idproduct, item.quantity])
+                task.None(billQueries.addItem, [billId, item.idproduct, item.quantity])
             });
-            await task.result(billQueries.updateAmount, [billprice, billId])
+            task.result(billQueries.updateAmount, [billprice, billId])
             .then((result) =>{
                 if(result.rowCount > 0) {
                     res.status(200).send({
