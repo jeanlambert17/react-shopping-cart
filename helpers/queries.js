@@ -27,6 +27,9 @@ module.exports.cart = {
 
 module.exports.bill = {
 
-    // Queries para la factura... 
-
+    createBill: "INSERT INTO bill (id_user, amount, date_bill) VALUES ($1, $2, $3) RETURNING id_bill;",
+    addItem: "INSERT INTO bill_product (id_bill, id_product, quantity_product) VALUES ($1, $2, $3);",
+    getItems: "SELECT id_product, quantity_product bill_product where id_bill=$1;",
+    updateAmount: "UPDATE bill SET amount = $1 WHERE id_bill=$2",
+    
 }
