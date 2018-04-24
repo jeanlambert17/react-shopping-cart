@@ -27,8 +27,8 @@ router.post('/add', isLoggedIn, (req, res) => {
 // Delete product from user's cart
 router.post('/delete', isLoggedIn, (req,res) => {
     let cartId = req.session.passport.user.cartid;
-    let { productId } = req.body;
-    db.none(cartQueries.deleteItem, [cartId,productId])
+    let { productCartId } = req.body;
+    db.none(cartQueries.deleteItem, [cartId,productCartId])
     .then(() => {    
         res.status(200).send({ response: 'Success' })
     }).catch((error) => {
