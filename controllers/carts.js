@@ -9,12 +9,18 @@ let router = express.Router();
 router.post('/add', isLoggedIn, (req, res) => {
     let cartId = req.session.passport.user.cartid;
     let {productId,quantity} = req.body;
-    db.none(cartQueries.addItem, [cartId,productId,quantity])
-    .then(()=> {
-        res.status(200).send({response:'Success'});
+    db.task('insert-item', async task => {
+        const itemId = await task.one(cartQueries.addItem, [cartId,productId,quantity], i => i && i.id_cart_product);
+        let item = {}
+        if(itemId) {
+            item = await task.one(cartQueries.getItem, [itemId]);
+        }
+        return item
+    }).then((data) => {
+        res.status(200).send({item:data});
     }).catch((error) => {
         console.log(error);
-        res.status(500).send({response:'Try again'})
+        res.status(500).send({ response: 'Try again' })
     })
 });
 

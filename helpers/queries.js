@@ -19,10 +19,10 @@ module.exports.product = {
 
 module.exports.cart = {
 
-    addItem: 'INSERT INTO cart_product (id_cart, id_product, quantity_product) VALUES($1,$2,$3)',
+    addItem: 'INSERT INTO cart_product (id_cart, id_product, quantity_product) VALUES($1,$2,$3) RETURNING id_cart_product',
     deleteItem: 'DELETE FROM cart_product WHERE id_cart = $1 AND id_product = $2',
     getItems: 'SELECT cart.id_cart_product AS id, cart.id_product AS idproduct, prod.brand_product AS brand, prod.price_product AS price, prod.name_product AS name, cart.quantity_product AS quantity FROM cart_product AS cart INNER JOIN product AS prod ON prod.id_product = cart.id_product WHERE id_cart = $1',
-
+    getItem: 'SELECT cart.id_cart_product AS id, cart.id_product AS idproduct, prod.brand_product AS brand, prod.price_product AS price, prod.name_product AS name, cart.quantity_product AS quantity FROM cart_product AS cart INNER JOIN product AS prod ON prod.id_product = cart.id_product WHERE id_cart_product = $1',
 }
 
 module.exports.bill = {
