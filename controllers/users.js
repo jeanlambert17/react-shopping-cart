@@ -84,4 +84,12 @@ router.get('/login', (req, res) => {
     })
 })
 
+router.get('/auth', (req,res) => {
+    if (req.isAuthenticated()) {
+        res.status(200).send({auth:'logged'});
+    } else {
+        res.status(200).send({auth:'invited'});
+    }
+})
+
 module.exports = router;

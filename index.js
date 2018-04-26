@@ -19,8 +19,6 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
     done(null, user);
 });
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -35,4 +33,3 @@ app.use('/', require('./controllers'));
 app.listen(10036, function () {
     console.log('Example app listening on port 10036!');
 });
-
