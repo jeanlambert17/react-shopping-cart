@@ -5,10 +5,6 @@ const isLoggedIn = require('./../middlewares/isLogged').isLoggedIn;
 
 let router = express.Router();
 
-router.get('/add', (req, res) => {
-    res.status(200).send('Hola');
-});
-
 router.post('/new', isLoggedIn, (req,res) => {
     let userId = req.session.passport.user.userid;
     let {brand,price,name,description,stock} = req.body;
@@ -42,6 +38,18 @@ router.post('/delete', isLoggedIn, (req,res) => {
         })
     })
 });
+
+router.post('/modify', isLoggedIn, (req,res) => {
+    let userId = req.session.passport.user.userid;
+    let { productId,name,description,stock,price,brand } = req.body
+    db.none(productQueries.modifyProduct, [userId,productId,name,description,stock,price,brand])
+    .then(() => {
+        res.status(200).send({status:200});
+    }).catch((error) => {
+        console.log(error)
+        res.status(500).send({status:500});
+    })
+})
 
 router.get('/list/:search', (req, res) => {
     db.any(productQueries.findProduct, [`%${req.params.search}%`])

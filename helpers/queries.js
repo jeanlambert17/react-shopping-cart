@@ -16,7 +16,8 @@ module.exports.product = {
     addProduct: 'INSERT INTO product(id_user, brand_product, price_product, name_product, des_product, stock_product) VALUES($1,$2,$3,$4,$5,$6)',
     deleteProduct: 'DELETE FROM product WHERE id_user = $1 AND id_product = $2',
     deleteProductFromCarts: 'DELETE FROM cart_product WHERE id_product = $1',
-
+    modifyProduct: 'UPDATE product SET name_product = $3, des_product = $4, stock_product = $5, price_product = $6, brand_product = $7 WHERE id_user = $1 AND id_product = $2',
+    // name_product = $3, des_product = $4, stock_product = $5, price_product = $6, brand_product = $7
 }
 
 module.exports.cart = {
