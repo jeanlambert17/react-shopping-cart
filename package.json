@@ -2,9 +2,12 @@
   "name": "shopping-cart",
   "version": "1.0.0",
   "description": "A shoping cart made with NODEJS",
-  "main": "index.js",
+  "main": "/app/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "author": "Jean Lambert & Fabio Pineda",
   "license": "ISC",
@@ -14,7 +17,15 @@
     "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "pg-promise": "^8.2.2"
+    "pg-promise": "^8.2.2",
+    "@material-ui/icons": "",
+    "@material-ui/core": "",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
