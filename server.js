@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', require('./controllers'));
+app.use('/', require('./server/controllers'));
 
 app.listen(10036, function () {
     console.log('Example app listening on port 10036!');
